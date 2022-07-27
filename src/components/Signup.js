@@ -4,7 +4,7 @@ import UserInfo from "../components/UserInfo"
 import PersonInfo from "../components/PersonInfo"
 import PersonHome from "../components/PersonHome"
 import Confirmation from "../components/Confirmation"
-import Success from "../components/Success"
+import Perfil from "../pages/Perfil"
 
 class Signup extends Component {
 	constructor(props) {
@@ -19,11 +19,12 @@ class Signup extends Component {
 			lastName: "",
 			age: "",
 			zipCode: "",
-			stateCity: "",
+			uf: "",
 			city: "",
-			district: "",
 			street: "",
 			streetNumb: "",
+			district: "",
+			complement: "",
 		}
 	}
 
@@ -39,6 +40,12 @@ class Signup extends Component {
 
 	handleStates = (inputState) => (event) => {
 		this.setState({ [inputState]: event.target.value })
+	}
+
+	handleSetStates = (states) => {
+		Object.keys(states).forEach((state) =>
+			this.setState({ [state]: states[state] })
+		)
 	}
 
 	handleScreen = (step) => {
@@ -66,6 +73,7 @@ class Signup extends Component {
 						prevScreen={this.prevScreen}
 						nextScreen={this.nextScreen}
 						handleStates={this.handleStates}
+						handleSetStates={this.handleSetStates}
 						values={this.state}
 					/>
 				)
@@ -78,7 +86,7 @@ class Signup extends Component {
 					/>
 				)
 			case 5:
-				return <Success />
+				return <Perfil />
 			default:
 				return console.log("ERROR")
 		}
@@ -96,16 +104,16 @@ class Signup extends Component {
 
 const Container = styled.div`
 	display: inherit;
-  width: 100%;
+	width: 100%;
 	flex-direction: column;
-  align-items: center;
-  margin: 3vh 3vw 3vh;
-  
-  & > h2 {
-    margin: 0;
-    margin-bottom: 3vh;
-    font-family: 'Roboto', sans-serif;
-  }
+	align-items: center;
+	margin: 3vh 3vw 3vh;
+
+	& > h2 {
+		margin: 0;
+		margin-bottom: 3vh;
+		font-family: "Roboto", sans-serif;
+	}
 `
 
 export default Signup

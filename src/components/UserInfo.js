@@ -4,21 +4,25 @@ import validator from "validator"
 import { useState } from "react"
 
 const UserInfo = (props) => {
-	const [error, setError] = useState(0)
+	const [error, setError] = useState([])
 
 	const Continue = (e) => {
 		e.preventDefault()
 
 		props.values.userEmail === ""
-			? setError("email")
+			? setError(["email", false])
 			: !validator.isEmail(props.values.userEmail)
-			? setError("email")
+			? setError(["email", true])
 			: props.values.userName === ""
-			? setError("name")
+			? setError(["name", false])
+			: props.values.userName.length < 6
+			? setError(["name", true])
 			: props.values.userPass === ""
-			? setError("pass")
+			? setError(["pass", false])
+			: props.values.userPass.length < 6
+			? setError(["pass", true])
 			: props.values.userPass !== props.values.userRePass
-			? setError("pass")
+			? setError(["rPass", true])
 			: props.nextScreen()
 	}
 
@@ -27,29 +31,35 @@ const UserInfo = (props) => {
 			<TextField
 				fullWidth
 				required
-				error={error === "email" ? true : false}
+				error={error[0] === "email" ? true : false}
 				variant="outlined"
 				margin="normal"
 				label="Email"
 				placeholder="Digite o email"
 				onChange={props.handleStates("userEmail")}
 				value={props.values.userEmail}
+				helperText={
+					error[0] === "email" && error[1] ? "E-mail inválido" : ""
+				}
 			/>
 			<TextField
 				fullWidth
 				required
-				error={error === "name" ? true : false}
+				error={error[0] === "name" ? true : false}
 				variant="outlined"
 				margin="normal"
 				label="Nome de usuário"
 				placeholder="Digite o nome de usuário"
 				onChange={props.handleStates("userName")}
 				value={props.values.userName}
+				helperText={
+					error[0] === "name" && error[1] ? "Nome de usuário deve conter pelo menos 6 caracteres" : ""
+				}
 			/>
 			<TextField
 				fullWidth
 				required
-				error={error === "pass" ? true : false}
+				error={error[0] === "pass" || error[0] === "rPass" ? true : false}
 				variant="outlined"
 				margin="normal"
 				label="Senha"
@@ -57,11 +67,14 @@ const UserInfo = (props) => {
 				placeholder="Digite a senha"
 				onChange={props.handleStates("userPass")}
 				value={props.values.userPass}
+				helperText={
+					error[0] === "pass" && error[1] ? "Senha deve conter pelo menos 6 caracteres" : ""
+				}
 			/>
 			<TextField
 				fullWidth
 				required
-				error={error === "pass" ? true : false}
+				error={error[0] === "pass" || error[0] === "rPass" ? true : false}
 				variant="outlined"
 				margin="normal"
 				label="Confirme a Senha"
@@ -69,6 +82,9 @@ const UserInfo = (props) => {
 				placeholder="Digite a senha novamente"
 				onChange={props.handleStates("userRePass")}
 				value={props.values.userRePass}
+				helperText={
+					error[0] === "rPass" && error[1] ? "Senhas não conferem" : ""
+				}
 			/>
 			<Button
 				style={{ marginTop: "2vh" }}
@@ -86,7 +102,7 @@ const UserInfo = (props) => {
 
 const Container = styled.div`
 	display: inherit;
-	width: 50%;
+	width: 100%;
 	flex-direction: inherit;
 	align-items: inherit;
 

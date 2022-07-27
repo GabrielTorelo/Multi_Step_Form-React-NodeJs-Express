@@ -89,16 +89,9 @@ const Confirmation = (props) => {
 					variant="outlined"
 					margin="normal"
 					label="Estado"
-					value={props.values.stateCity}
-					style={{marginLeft: ".5vw"}}
+					value={props.values.uf}
+					style={{ marginLeft: ".5vw" }}
 				/>
-			</Box>
-			<Box
-				style={{
-					display: "flex",
-					justifyContent: "space-between",
-				}}
-			>
 				<TextField
 					fullWidth
 					disabled
@@ -106,14 +99,6 @@ const Confirmation = (props) => {
 					margin="normal"
 					label="Cidade"
 					value={props.values.city}
-				/>
-				<TextField
-					fullWidth
-					disabled
-					variant="outlined"
-					margin="normal"
-					label="Bairro"
-					value={props.values.district}
 					style={{marginLeft: ".5vw"}}
 				/>
 			</Box>
@@ -137,6 +122,30 @@ const Confirmation = (props) => {
 					margin="normal"
 					label="Número"
 					value={props.values.streetNumb}
+					style={{marginLeft: ".5vw"}}
+				/>
+			</Box>
+			<Box
+				style={{
+					display: "flex",
+					justifyContent: "space-between",
+				}}
+			>
+				<TextField
+					fullWidth
+					disabled
+					variant="outlined"
+					margin="normal"
+					label="Bairro"
+					value={props.values.district}
+				/>
+				<TextField
+					fullWidth
+					disabled
+					variant="outlined"
+					margin="normal"
+					label="Complemento"
+					value={props.values.complement}
 					style={{marginLeft: ".5vw"}}
 				/>
 			</Box>
@@ -170,7 +179,7 @@ const Confirmation = (props) => {
 
 const Container = styled.div`
 	display: inherit;
-	width: 50%;
+	width: 100%;
 	flex-direction: inherit;
 
 	@media (max-width: 768px) {

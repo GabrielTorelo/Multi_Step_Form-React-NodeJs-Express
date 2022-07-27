@@ -3,17 +3,19 @@ import { TextField, Button, Box } from "@material-ui/core"
 import { useState } from "react"
 
 const PersonInfo = (props) => {
-	const [error, setError] = useState(0)
+	const [error, setError] = useState([])
 
 	const Continue = (e) => {
 		e.preventDefault()
 
 		props.values.firstName === ""
-			? setError("fistName")
+			? setError(["fistName", false])
 			: props.values.lastName === ""
-			? setError("lastName")
+			? setError(["lastName", false])
 			: props.values.age === ""
-			? setError("age")
+			? setError(["age", false])
+			: parseInt(props.values.age) < 16
+			? setError(["age", true])
 			: props.nextScreen()
 	}
 
@@ -27,7 +29,7 @@ const PersonInfo = (props) => {
 			<TextField
 				fullWidth
 				required
-				error={error === "fistName" ? true : false}
+				error={error[0] === "fistName" ? true : false}
 				variant="outlined"
 				margin="normal"
 				label="Primeiro Nome"
@@ -38,7 +40,7 @@ const PersonInfo = (props) => {
 			<TextField
 				fullWidth
 				required
-				error={error === "lastName" ? true : false}
+				error={error[0] === "lastName" ? true : false}
 				variant="outlined"
 				margin="normal"
 				label="Último Nome"
@@ -49,7 +51,7 @@ const PersonInfo = (props) => {
 			<TextField
 				fullWidth
 				required
-				error={error === "age" ? true : false}
+				error={error[0] === "age" ? true : false}
 				variant="outlined"
 				margin="normal"
 				label="Idade"
@@ -57,6 +59,9 @@ const PersonInfo = (props) => {
 				placeholder="Digite a sua idade"
 				onChange={props.handleStates("age")}
 				value={props.values.age}
+				helperText={
+					error[0] === "age" && error[1] ? "Sua idade deve ser maior que 15 anos" : ""
+				}
 			/>
 			<Box
 				style={{
@@ -88,7 +93,7 @@ const PersonInfo = (props) => {
 
 const Container = styled.div`
 	display: inherit;
-	width: 50%;
+	width: 100%;
 	flex-direction: inherit;
 
 	@media (max-width: 768px) {

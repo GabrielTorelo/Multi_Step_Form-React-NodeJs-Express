@@ -1,12 +1,11 @@
 import styled from "styled-components"
 import React, { Component } from "react"
-import Signup from "../components/Signup"
 
-class Home extends Component {
+class Perfil extends Component {
 	render() {
 		return (
 			<Container>
-				<Signup />
+				
 			</Container>
 		)
 	}
@@ -28,4 +27,4 @@ const Container = styled.div`
     }
 `
 
-export default Home
+export default Perfil
