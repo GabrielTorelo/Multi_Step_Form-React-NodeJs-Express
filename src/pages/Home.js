@@ -19,6 +19,7 @@ const Container = styled.div`
     justify-content: center;
 	margin: auto;
 	margin-top: 3%;
+	margin-bottom: 3%;
 
     @media (max-width: 768px){
         width: 95%;

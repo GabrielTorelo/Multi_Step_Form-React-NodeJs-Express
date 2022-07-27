@@ -9,8 +9,8 @@ const Menu = () => {
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
 						<defs>
 							<linearGradient id="grad1">
-								<stop offset="70%" stop-color="#6833cb" />
-								<stop offset="100%" stop-color="#9042f6" />
+								<stop offset="70%" stopColor="#6833cb" />
+								<stop offset="100%" stopColor="#9042f6" />
 							</linearGradient>
 						</defs>
 						<path
