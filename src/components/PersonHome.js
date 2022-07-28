@@ -204,10 +204,6 @@ const Container = styled.div`
 	display: inherit;
 	width: 100%;
 	flex-direction: inherit;
-
-	@media (max-width: 768px) {
-		width: 100%;
-	}
 `
 
 export default PersonHome

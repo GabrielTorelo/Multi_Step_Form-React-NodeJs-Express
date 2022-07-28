@@ -105,10 +105,6 @@ const Container = styled.div`
 	width: 100%;
 	flex-direction: inherit;
 	align-items: inherit;
-
-	@media (max-width: 768px) {
-		width: 100%;
-	}
 `
 
 export default UserInfo

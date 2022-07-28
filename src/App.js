@@ -6,14 +6,14 @@ import {
 } from "react-router-dom"
 import React from "react"
 import Home from "./pages/Home"
-import Perfil from "./pages/Perfil"
+import Profile from "./pages/Profile"
 
 const App = () => {
 	return (
 			<Router>
 				<Routes>
 					<Route exact path="/" element={<Home />} />
-					<Route exact path="/perfil" element={<Perfil />} />
+					<Route exact path="/perfil" element={<Profile />} />
 					<Route path="*" element={<Navigate to="/" />} />
 				</Routes>
 			</Router>

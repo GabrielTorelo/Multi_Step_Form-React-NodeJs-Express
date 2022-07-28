@@ -4,7 +4,7 @@ import UserInfo from "../components/UserInfo"
 import PersonInfo from "../components/PersonInfo"
 import PersonHome from "../components/PersonHome"
 import Confirmation from "../components/Confirmation"
-import Perfil from "../pages/Perfil"
+import Profile from "../pages/Profile"
 
 class Signup extends Component {
 	constructor(props) {
@@ -86,7 +86,7 @@ class Signup extends Component {
 					/>
 				)
 			case 5:
-				return <Perfil />
+				return <Profile />
 			default:
 				return console.log("ERROR")
 		}

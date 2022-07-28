@@ -1,11 +1,14 @@
 import styled from "styled-components"
 import React, { Component } from "react"
+import PerfilBanner from "../components/PerfilBanner"
+import PerfilContent from "../components/PerfilContent"
 
-class Perfil extends Component {
+class Profile extends Component {
 	render() {
 		return (
 			<Container>
-				
+				<PerfilBanner />
+				<PerfilContent />
 			</Container>
 		)
 	}
@@ -13,9 +16,11 @@ class Perfil extends Component {
 
 const Container = styled.div`
     display: flex;
-	width: 40%;
-	background-color: rgba(255, 255, 255, .9);
+	width: 80%;
+	flex-direction: column;
+	background-color: transparent;
     justify-content: center;
+	font-family: "Roboto", sans-serif;
 	border-radius: 20px;
 	margin: auto;
 	margin-top: 3%;
@@ -27,4 +32,4 @@ const Container = styled.div`
     }
 `
 
-export default Perfil
+export default Profile
