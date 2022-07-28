@@ -1,14 +1,12 @@
 import styled from "styled-components"
 import React, { Component } from "react"
-import ProfileBanner from "../components/ProfileBanner"
-import ProfileContent from "../components/ProfileContent"
+import Signing from "../components/Signing"
 
-class Profile extends Component {
+class Login extends Component {
 	render() {
 		return (
 			<Container>
-				<ProfileBanner />
-				<ProfileContent />
+                <Signing />
 			</Container>
 		)
 	}
@@ -16,9 +14,8 @@ class Profile extends Component {
 
 const Container = styled.div`
     display: flex;
-	width: 80%;
-	flex-direction: column;
-	background-color: transparent;
+	width: 40%;
+	background-color: rgba(255, 255, 255, .9);
     justify-content: center;
 	border-radius: 20px;
 	margin: auto;
@@ -31,4 +28,4 @@ const Container = styled.div`
     }
 `
 
-export default Profile
+export default Login

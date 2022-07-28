@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { useState } from "react"
 import SocialMedia from "./SocialMedia"
 
-const PerfilBanner = (props) => {
+const ProfileBanner = (props) => {
     const [name, setName] = useState("Gabriel Torelo")
     const [picProfile, setPicProfile] = useState("https://firebasestorage.googleapis.com/v0/b/testedevfullstack.appspot.com/o/profile01.jpeg?alt=media&token=bdb671ec-ba1c-4145-9ce6-9cfd8abce937")
     const [picBackGround, setPicBackGround] = useState("https://firebasestorage.googleapis.com/v0/b/testedevfullstack.appspot.com/o/backProfile01.jpg?alt=media&token=d39c1c6a-0a70-4cf7-abaf-7b8d23c80747")
@@ -90,4 +90,4 @@ const RightBar = styled.div`
     }
 `
 
-export default PerfilBanner
+export default ProfileBanner

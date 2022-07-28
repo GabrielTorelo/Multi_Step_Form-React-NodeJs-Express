@@ -112,7 +112,7 @@ const Container = styled.div`
 	& > h2 {
 		margin: 0;
 		margin-bottom: 3vh;
-		font-family: "Roboto", sans-serif;
+		font-family: inherit;
 	}
 `
 

@@ -184,7 +184,7 @@ const Container = styled.div`
 	
 	& > h2 {
 		text-align: center;
-		font-family: 'Roboto', sans-serif;
+		font-family: inherit;
 	}
 `
 
