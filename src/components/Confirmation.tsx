@@ -1,13 +1,14 @@
 import styled from "styled-components"
 import { TextField, Button, Box } from "@material-ui/core"
 
-const Confirmation = (props) => {
-	const Continue = (e) => {
+const Confirmation = (props:  any) => {
+
+	const Continue = (e:  any) => {
 		e.preventDefault()
 		props.nextScreen()
 	}
 
-	const Previous = (e) => {
+	const Previous = (e:  any) => {
 		e.preventDefault()
 		props.prevScreen()
 	}
@@ -35,7 +36,7 @@ const Confirmation = (props) => {
 					margin="normal"
 					label="Nome de usuário"
 					value={props.values.userName}
-					style={{marginLeft: ".5vw"}}
+					style={{ marginLeft: ".5vw" }}
 				/>
 			</Box>
 			<Box
@@ -59,7 +60,7 @@ const Confirmation = (props) => {
 					margin="normal"
 					label="Último Nome"
 					value={props.values.lastName}
-					style={{marginLeft: ".5vw"}}
+					style={{ marginLeft: ".5vw" }}
 				/>
 				<TextField
 					disabled
@@ -67,7 +68,7 @@ const Confirmation = (props) => {
 					margin="normal"
 					label="Idade"
 					value={props.values.age}
-					style={{marginLeft: ".5vw"}}
+					style={{ marginLeft: ".5vw" }}
 				/>
 			</Box>
 			<Box
@@ -99,7 +100,7 @@ const Confirmation = (props) => {
 					margin="normal"
 					label="Cidade"
 					value={props.values.city}
-					style={{marginLeft: ".5vw"}}
+					style={{ marginLeft: ".5vw" }}
 				/>
 			</Box>
 			<Box
@@ -122,7 +123,7 @@ const Confirmation = (props) => {
 					margin="normal"
 					label="Número"
 					value={props.values.streetNumb}
-					style={{marginLeft: ".5vw"}}
+					style={{ marginLeft: ".5vw" }}
 				/>
 			</Box>
 			<Box
@@ -146,7 +147,7 @@ const Confirmation = (props) => {
 					margin="normal"
 					label="Complemento"
 					value={props.values.complement}
-					style={{marginLeft: ".5vw"}}
+					style={{ marginLeft: ".5vw" }}
 				/>
 			</Box>
 			<Box

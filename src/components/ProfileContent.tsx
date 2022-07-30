@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import SocialMedia from "./SocialMedia"
 
-const ProfileContent = (props) => {
+const ProfileContent = (props: any) => {
 	return (
 		<Container>
 			<h1>Resumo</h1>

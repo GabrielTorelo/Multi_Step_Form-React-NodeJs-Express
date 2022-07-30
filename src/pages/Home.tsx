@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import React, { Component } from "react"
+import { Component } from "react"
 import Signup from "../components/Signup"
 
 class Home extends Component {

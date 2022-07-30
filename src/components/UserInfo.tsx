@@ -3,20 +3,26 @@ import { TextField, Button } from "@material-ui/core"
 import validator from "validator"
 import { useState } from "react"
 
-const UserLogin = (props) => {
-	const [error, setError] = useState([])
+const UserInfo = (props: any) => {
+	const [error, setError] = useState(["", false])
 
-	const Continue = (e) => {
+	const Continue = (e: any) => {
 		e.preventDefault()
 
 		props.values.userEmail === ""
 			? setError(["email", false])
 			: !validator.isEmail(props.values.userEmail)
 			? setError(["email", true])
+			: props.values.userName === ""
+			? setError(["name", false])
+			: props.values.userName.length < 6
+			? setError(["name", true])
 			: props.values.userPass === ""
 			? setError(["pass", false])
 			: props.values.userPass.length < 6
 			? setError(["pass", true])
+			: props.values.userPass !== props.values.userRePass
+			? setError(["rPass", true])
 			: props.nextScreen()
 	}
 
@@ -39,6 +45,20 @@ const UserLogin = (props) => {
 			<TextField
 				fullWidth
 				required
+				error={error[0] === "name" ? true : false}
+				variant="outlined"
+				margin="normal"
+				label="Nome de usuário"
+				placeholder="Digite o nome de usuário"
+				onChange={props.handleStates("userName")}
+				value={props.values.userName}
+				helperText={
+					error[0] === "name" && error[1] ? "Nome de usuário deve conter pelo menos 6 caracteres" : ""
+				}
+			/>
+			<TextField
+				fullWidth
+				required
 				error={error[0] === "pass" || error[0] === "rPass" ? true : false}
 				variant="outlined"
 				margin="normal"
@@ -51,6 +71,21 @@ const UserLogin = (props) => {
 					error[0] === "pass" && error[1] ? "Senha deve conter pelo menos 6 caracteres" : ""
 				}
 			/>
+			<TextField
+				fullWidth
+				required
+				error={error[0] === "pass" || error[0] === "rPass" ? true : false}
+				variant="outlined"
+				margin="normal"
+				label="Confirme a Senha"
+				type="password"
+				placeholder="Digite a senha novamente"
+				onChange={props.handleStates("userRePass")}
+				value={props.values.userRePass}
+				helperText={
+					error[0] === "rPass" && error[1] ? "Senhas não conferem" : ""
+				}
+			/>
 			<Button
 				style={{ marginTop: "2vh" }}
 				fullWidth
@@ -59,7 +94,7 @@ const UserLogin = (props) => {
 				variant="contained"
 				onClick={Continue}
 			>
-				Login
+				Próximo
 			</Button>
 		</Container>
 	)
@@ -72,4 +107,4 @@ const Container = styled.div`
 	align-items: inherit;
 `
 
-export default UserLogin
+export default UserInfo

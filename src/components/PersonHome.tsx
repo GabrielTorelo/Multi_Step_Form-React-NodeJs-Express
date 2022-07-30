@@ -2,10 +2,10 @@ import styled from "styled-components"
 import { TextField, Button, Box } from "@material-ui/core"
 import { useState } from "react"
 
-const PersonHome = (props) => {
-	const [error, setError] = useState(0)
+const PersonHome = (props: any) => {
+	const [error, setError] = useState("")
 
-	const Continue = (e) => {
+	const Continue = (e: any) => {
 		e.preventDefault()
 
 		props.values.zipCode === ""
@@ -25,12 +25,12 @@ const PersonHome = (props) => {
 			: props.nextScreen()
 	}
 
-	const Previous = (e) => {
+	const Previous = (e: any) => {
 		e.preventDefault()
 		props.prevScreen()
 	}
 
-	const handleZipCode = (e) => {
+	const handleZipCode = (e: any) => {
 		if (e.target.value.length > 8) e.target.value = e.target.value.slice(0, 8)
 
 		if (e.target.value.length === 8) {

@@ -2,10 +2,10 @@ import styled from "styled-components"
 import { TextField, Button, Box } from "@material-ui/core"
 import { useState } from "react"
 
-const PersonInfo = (props) => {
-	const [error, setError] = useState([])
+const PersonInfo = (props: any) => {
+	const [error, setError] = useState(["", false])
 
-	const Continue = (e) => {
+	const Continue = (e: any) => {
 		e.preventDefault()
 
 		props.values.firstName === ""
@@ -19,7 +19,7 @@ const PersonInfo = (props) => {
 			: props.nextScreen()
 	}
 
-	const Previous = (e) => {
+	const Previous = (e: any) => {
 		e.preventDefault()
 		props.prevScreen()
 	}

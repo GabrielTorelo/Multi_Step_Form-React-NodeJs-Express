@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const SocialMedia = (props) => {
+const SocialMedia = () => {
 	return (
 		<Container>
 			<a href="https://github.com/" target="_blank" rel="noreferrer">

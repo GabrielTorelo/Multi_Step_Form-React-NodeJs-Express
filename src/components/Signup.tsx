@@ -1,13 +1,12 @@
 import styled from "styled-components"
-import React, { Component } from "react"
-import UserInfo from "../components/UserInfo"
-import PersonInfo from "../components/PersonInfo"
-import PersonHome from "../components/PersonHome"
-import Confirmation from "../components/Confirmation"
-import Profile from "../pages/Profile"
+import React from "react"
+import UserInfo from "./UserInfo"
+import PersonInfo from "./PersonInfo"
+import PersonHome from "./PersonHome"
+import Confirmation from "./Confirmation"
 
-class Signup extends Component {
-	constructor(props) {
+class Signup extends React.Component<any, any> {
+	constructor(props: any) {
 		super(props)
 		this.state = {
 			step: 1,
@@ -29,26 +28,26 @@ class Signup extends Component {
 	}
 
 	prevScreen = () => {
-		const { step } = this.state
+		const { step }: any = this.state
 		this.setState({ step: step - 1 })
 	}
 
 	nextScreen = () => {
-		const { step } = this.state
+		const { step }: any = this.state
 		this.setState({ step: step + 1 })
 	}
 
-	handleStates = (inputState) => (event) => {
+	handleStates = (inputState: any) => (event: any) => {
 		this.setState({ [inputState]: event.target.value })
 	}
 
-	handleSetStates = (states) => {
+	handleSetStates = (states: any) => {
 		Object.keys(states).forEach((state) =>
 			this.setState({ [state]: states[state] })
 		)
 	}
 
-	handleScreen = (step) => {
+	handleScreen = (step: any) => {
 		switch (step) {
 			case 1:
 				return (
@@ -86,7 +85,8 @@ class Signup extends Component {
 					/>
 				)
 			case 5:
-				return <Profile />
+				console.log("Pronto para receber o Back-end");
+				break;
 			default:
 				return console.log("ERROR")
 		}
@@ -94,6 +94,7 @@ class Signup extends Component {
 
 	render() {
 		return (
+			// @ts-ignore
 			<Container>
 				<h2>Cadastre-se</h2>
 				{this.handleScreen(this.state.step)}

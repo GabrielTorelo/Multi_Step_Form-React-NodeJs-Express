@@ -1,9 +1,9 @@
 import styled from "styled-components"
-import React, { Component } from "react"
+import { Component } from "react"
 import UserLogin from "./UserLogin"
 
 class Signing extends Component {
-	constructor(props) {
+	constructor(props: any) {
 		super(props)
 		this.state = {
 			userEmail: "",
@@ -15,7 +15,7 @@ class Signing extends Component {
 		console.log("Pronto para receber o Back-end");
 	}
 
-	handleStates = (inputState) => (event) => {
+	handleStates = (inputState: any) => (event: any) => {
 		this.setState({ [inputState]: event.target.value })
 	}
 
