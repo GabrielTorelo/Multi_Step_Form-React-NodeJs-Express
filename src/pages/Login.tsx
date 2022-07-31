@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { Component } from "react"
-import Signing from "../components/Signing"
+import Signing from "../components/login/Signing"
 
 class Login extends Component {
 	render() {

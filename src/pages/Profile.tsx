@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { Component } from "react"
-import ProfileBanner from "../components/ProfileBanner"
-import ProfileContent from "../components/ProfileContent"
+import ProfileBanner from "../components/profile/Banner"
+import ProfileContent from "../components/profile/Summary"
 
 class Profile extends Component {
 	render() {

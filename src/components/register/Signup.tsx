@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import React from "react"
-import UserInfo from "./UserInfo"
-import PersonInfo from "./PersonInfo"
-import PersonHome from "./PersonHome"
-import Confirmation from "./Confirmation"
+import UserInfo from "./steps/UserInfo"
+import PersonInfo from "./steps/PersonInfo"
+import PersonHome from "./steps/PersonHome"
+import Confirmation from "./steps/Confirmation"
 
 class Signup extends React.Component<any, any> {
 	constructor(props: any) {

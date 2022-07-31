@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { Component } from "react"
+import React from "react"
 import UserLogin from "./UserLogin"
 
-class Signing extends Component {
+class Signing extends React.Component<any, any> {
 	constructor(props: any) {
 		super(props)
 		this.state = {
@@ -12,7 +12,7 @@ class Signing extends Component {
 	}
 
 	nextScreen = () => {
-		console.log("Pronto para receber o Back-end");
+		console.log(`Email: ${this.state.userEmail} | Senha: ${this.state.userPass}`);
 	}
 
 	handleStates = (inputState: any) => (event: any) => {

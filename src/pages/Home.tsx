@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { Component } from "react"
-import Signup from "../components/Signup"
+import Signup from "../components/register/Signup"
 
 class Home extends Component {
 	render() {

@@ -15,9 +15,9 @@ const ProfileContent = (props: any) => {
 				quia et omnis laudantium? Et accusamus mollitia et dolorem obcaecati vel
 				nostrum fugit aut rerum ipsam est placeat et deleniti atque.{" "}
 			</p>
-            <Social>
-                <SocialMedia />
-            </Social>
+			<Social>
+				<SocialMedia />
+			</Social>
 		</Container>
 	)
 }
