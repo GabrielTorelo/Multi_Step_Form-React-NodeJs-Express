@@ -11,11 +11,11 @@ export default class User{
     street: string;
     streetNumb: string;
     district: string;
-    complement: string;
+    complement?: string;
 
     constructor(e: string, uN: string, p: string, fN: string, lN: string,
         a: string, zC: string, u: string, cT: string, s: string,
-        sN: string, d: string, c: string) {
+        sN: string, d: string, c?: string) {
 
         this.email = e;
         this.userName = uN;
