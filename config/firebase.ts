@@ -1,5 +1,12 @@
-import admin from "firebase-admin";
+import * as admin from "firebase-admin";
 
-const config = require('./config')
+const key = require("../keys/serviceAccountKey.json");
 
-module.exports = admin.initializeApp(config.firebaseConfig);
+admin.initializeApp({
+    credential: admin.credential.cert(key)
+});
+
+const db: FirebaseFirestore.Firestore = admin.firestore();
+db.settings({timestampsInSnapshots: true});
+
+export default db;
