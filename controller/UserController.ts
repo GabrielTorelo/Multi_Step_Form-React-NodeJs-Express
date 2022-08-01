@@ -1,6 +1,7 @@
 import { NextFunction } from "connect";
 import { Request, Response } from "express";
 import User from "../model/userModel"
+// import error from "../utils/error"
 
 export default class UserController {
     public static create(req: Request, res: Response, next: NextFunction): void {
