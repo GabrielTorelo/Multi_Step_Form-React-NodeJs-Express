@@ -1,34 +1,25 @@
-export default class User{
-    email: string;
-    userName: string;
-    pass: string;
-    firstName: string;
-    lastName: string;
-    age: string;
-    zipCode: string;
-    uf: string;
-    city: string;
-    street: string;
-    streetNumb: string;
-    district: string;
-    complement?: string;
+import Joi from "joi";
 
-    constructor(e: string, uN: string, p: string, fN: string, lN: string,
-        a: string, zC: string, u: string, cT: string, s: string,
-        sN: string, d: string, c?: string) {
+const schemaUser = Joi.object({
+  email: Joi.string().email().required(),
+  userName: Joi.string().min(6).required(),
+  pass: Joi.string().min(6).required(),
+});
 
-        this.email = e;
-        this.userName = uN;
-        this.pass = p;
-        this.firstName = fN;
-        this.lastName = lN;
-        this.age = a;
-        this.zipCode = zC;
-        this.uf = u;
-        this.city = cT;
-        this.street = s;
-        this.streetNumb = sN;
-        this.district = d;
-        this.complement = c;
-    }
-}
+const schemaInfo = Joi.object({
+  firstName: Joi.string().required(),
+  lastName: Joi.string().required(),
+  age: Joi.number().greater(15).required()
+});
+
+const schemaAdds = Joi.object({
+  zipCode: Joi.string().required(),
+  uf: Joi.string().required(),
+  city: Joi.string().required(),
+  street: Joi.string().required(),
+  streetNumb: Joi.string().required(),
+  district: Joi.string().required(),
+  complement: Joi.string().default('')
+});
+
+export default { schemaUser, schemaInfo, schemaAdds }

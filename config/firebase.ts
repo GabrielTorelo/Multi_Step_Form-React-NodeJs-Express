@@ -7,6 +7,8 @@ admin.initializeApp({
 });
 
 const db: FirebaseFirestore.Firestore = admin.firestore();
-db.settings({timestampsInSnapshots: true});
+db.settings({ timestampsInSnapshots: true });
 
-export default db;
+const auth = admin.auth();
+
+export default { db, auth };
