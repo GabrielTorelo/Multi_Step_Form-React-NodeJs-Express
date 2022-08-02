@@ -1,7 +1,8 @@
 import { NextFunction } from "connect";
 import { Request, Response } from "express";
+import { ObjectSchema } from "joi";
 import firebase from "../config/firebase";
-import User from "../model/userModel"
+import User from "../model/userModel";
 // import error from "../utils/error"
 
 export default class UserController {
@@ -11,7 +12,7 @@ export default class UserController {
       User.schemaUser.validateAsync({ email, userName, pass }).then(async val => {
         await firebase
           .auth
-          .createUser({email: val.email, password: val.pass, displayName: val.userName})
+          .createUser({ email: val.email, password: val.pass, displayName: val.userName })
           .then((userCredential) => {
             const userID = userCredential.uid
             const { firstName, lastName, age } = req.body;
@@ -73,8 +74,44 @@ export default class UserController {
     }
   }
 
-  public static update(req: Request, res: Response, next: NextFunction): void {
-    res.send("UPDATE")
+  public static update(req: Request, res: Response): void {
+    let safe = true
+    let schema: any = undefined
+    let objValid = {}
+    
+    if (req.params.col === 'Info') {
+      const { firstName, lastName, age } = req.body;
+      schema = User.schemaInfo
+      objValid = { firstName, lastName, age }
+    }
+    else if (req.params.col === 'Address') {
+      const { zipCode, uf, city, street, streetNumb, district, complement } = req.body;
+      schema = User.schemaAdds
+      objValid = { zipCode, uf, city, street, streetNumb, district, complement }
+    }
+    else {
+      safe = false
+      res.status(400).send("invalid column!")
+    }
+
+    if (safe) {
+      try {
+        schema.validateAsync(objValid).then(async (val: { [x: string]: any; } & FirebaseFirestore.AddPrefixToKeys<string, any>) => {
+          await firebase
+            .db
+            .collection(req.params.col)
+            .doc(req.params.id)
+            .update(val)
+            .then(() => {
+              res.status(201).send('Update Sucess!')
+            })
+        }).catch((e: { message: any; }) => {
+          res.status(400).send(`Error: ${e.message}`)
+        })
+      } catch (e) {
+        res.status(400).send(`Error: ${e}`)
+      }
+    }
   }
 
   public static async delete(req: Request, res: Response): Promise<void> {
