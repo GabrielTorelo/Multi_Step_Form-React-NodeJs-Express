@@ -28,7 +28,7 @@ export default class UserController {
                       .doc(userID)
                       .set(val)
                       .then(() => {
-                        res.status(201).send('Create Sucess!')
+                        res.status(201).send(userID)
                       })
                   }).catch(e => {
                     res.status(400).send(`Error: ${e.message}`)
