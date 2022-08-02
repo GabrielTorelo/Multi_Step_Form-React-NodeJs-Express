@@ -1,51 +1,69 @@
 import styled from "styled-components"
-import { TextField } from "@material-ui/core"
+import { TextField, Box } from "@material-ui/core"
 
 const ShowInfoData = (props: any) => {
-    return (
-        <Container>
-            <TextField
-                fullWidth
-                disabled
-                variant="outlined"
-                margin="normal"
-                label="Primeiro Nome"
-            // value={props.values.firstName}
-            />
-            <TextField
-                fullWidth
-                disabled
-                variant="outlined"
-                margin="normal"
-                label="Último Nome"
-            // value={props.values.lastName}
-            />
-            <TextField
-                fullWidth
-                disabled
-                variant="outlined"
-                margin="normal"
-                label="Idade"
-            // value={props.values.age}
-            />
-        </Container>
-    )
+	return (
+		<Container>
+      <Box
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
+      >
+        <TextField
+          fullWidth
+          disabled
+          variant="outlined"
+          margin="normal"
+          label="Primeiro Nome"
+          value={props.values[1].firstName}
+        />
+        <TextField
+          fullWidth
+          disabled
+          variant="outlined"
+          margin="normal"
+          label="Último Nome"
+          value={props.values[1].lastName}
+        />
+        <TextField
+          fullWidth
+          disabled
+          variant="outlined"
+          margin="normal"
+          label="Idade"
+          value={props.values[1].age}
+        />
+      </Box>
+    </Container>
+	)
 }
 
 const Container = styled.div`
     display: inherit;
-    width: 90%;
+    width: 50%;
     flex-direction: column;
     align-self: center;
     margin-bottom: 5vh;
 
-    @media (max-width: 768px){
-        width: 95%;
+    & > div > div > div > input {
+        background-color: rgba(255, 255, 255, 0.8);
+        -webkit-text-fill-color: black;
+        border-radius: 5px;
     }
 
-    & > div > div > input {
-        background-color: rgba(255, 255, 255, 0.5);
-        border-radius: 5px;
+    & > div > div > label {
+      display: inherit;
+      -webkit-text-fill-color: rgba(255, 255, 255, 0.8);
+      background-color: black;
+      padding: .1vw 1vw .1vw;
+      border-radius: 5px;
+      
+
+      @media (max-width: 768px){
+        padding: .5vw 1vw .5vw;
+      }
     }
 `
 

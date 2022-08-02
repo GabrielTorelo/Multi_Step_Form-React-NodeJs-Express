@@ -5,15 +5,15 @@ import ProfileContent from "../components/profile/Summary"
 import PersonalData from "../components/profile/PersonalData"
 
 class Profile extends Component {
-	render() {
-		return (
-			<Container>
-				<ProfileBanner />
-				<ProfileContent />
-				<PersonalData />
-			</Container>
-		)
-	}
+  render() {
+    return (
+      <Container>
+        <ProfileBanner />
+        <ProfileContent />
+        <PersonalData />
+      </Container>
+    )
+  }
 }
 
 const Container = styled.div`
