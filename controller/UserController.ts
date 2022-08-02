@@ -1,9 +1,6 @@
-import { NextFunction } from "connect";
 import { Request, Response } from "express";
-import { ObjectSchema } from "joi";
 import firebase from "../config/firebase";
 import User from "../model/userModel";
-// import error from "../utils/error"
 
 export default class UserController {
   public static async create(req: Request, res: Response): Promise<void> {
@@ -78,7 +75,7 @@ export default class UserController {
     let safe = true
     let schema: any = undefined
     let objValid = {}
-    
+
     if (req.params.col === 'Info') {
       const { firstName, lastName, age } = req.body;
       schema = User.schemaInfo
