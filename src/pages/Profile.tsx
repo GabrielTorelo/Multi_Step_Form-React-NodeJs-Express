@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { Component } from "react"
 import ProfileBanner from "../components/profile/Banner"
 import ProfileContent from "../components/profile/Summary"
+import PersonalData from "../components/profile/PersonalData"
 
 class Profile extends Component {
 	render() {
@@ -9,6 +10,7 @@ class Profile extends Component {
 			<Container>
 				<ProfileBanner />
 				<ProfileContent />
+				<PersonalData />
 			</Container>
 		)
 	}
