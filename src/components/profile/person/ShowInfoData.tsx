@@ -2,8 +2,8 @@ import styled from "styled-components"
 import { TextField, Box } from "@material-ui/core"
 
 const ShowInfoData = (props: any) => {
-	return (
-		<Container>
+  return (
+    <Container>
       <Box
         style={{
           display: "flex",
@@ -37,7 +37,7 @@ const ShowInfoData = (props: any) => {
         />
       </Box>
     </Container>
-	)
+  )
 }
 
 const Container = styled.div`
