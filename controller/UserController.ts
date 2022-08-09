@@ -49,6 +49,50 @@ export default class UserController {
     }
   }
 
+  public static async createOne(req: Request, res: Response): Promise<void> {
+    if (req.params.col === "Address") {
+      const { zipCode, uf, city, street, streetNumb, district, complement } = req.body;
+      try {
+        User.schemaAdds.validateAsync({ zipCode, uf, city, street, streetNumb, district, complement }).then(async val => {
+          await firebase
+            .db
+            .collection(req.params.col)
+            .doc(req.params.id)
+            .set(val)
+            .then(() => {
+              res.status(201).send("Create Sucess!")
+            })
+        }).catch(e => {
+          res.status(400).send(`Error: ${e.message}`)
+        })
+      } catch (e) {
+        res.status(400).send(`Error: ${e}`)
+      }
+    }
+    else if (req.params.col === "Info") {
+      const { firstName, lastName, age } = req.body;
+      try {
+        User.schemaInfo.validateAsync({ firstName, lastName, age }).then(async val => {
+          await firebase
+            .db
+            .collection(req.params.col)
+            .doc(req.params.id)
+            .set(val)
+            .then(() => {
+              res.status(201).send("Create Sucess!")
+            })
+        }).catch(e => {
+          res.status(400).send(`Error: ${e.message}`)
+        })
+      } catch (e) {
+        res.status(400).send(`Error: ${e}`)
+      }
+    }
+    else {
+      res.status(400).send(`Error: Column not found`)
+    }
+  }
+
   public static async read(req: Request, res: Response): Promise<void> {
     try {
       const address =

@@ -19,7 +19,7 @@ const schemaAdds = Joi.object({
   street: Joi.string().required(),
   streetNumb: Joi.string().required(),
   district: Joi.string().required(),
-  complement: Joi.string().default('')
+  complement: Joi.string().empty('').default('')
 });
 
 export default { schemaUser, schemaInfo, schemaAdds }
