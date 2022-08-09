@@ -1,23 +1,32 @@
 import styled from "styled-components"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import SocialMedia from "./SocialMedia"
 
-const ProfileBanner = (props: any) => {
-    const [name, setName] = useState("Gabriel Torelo")
-    const [picProfile, setPicProfile] = useState("https://firebasestorage.googleapis.com/v0/b/testedevfullstack.appspot.com/o/profile01.jpeg?alt=media&token=bdb671ec-ba1c-4145-9ce6-9cfd8abce937")
-    const [picBackGround, setPicBackGround] = useState("https://firebasestorage.googleapis.com/v0/b/testedevfullstack.appspot.com/o/backProfile01.jpg?alt=media&token=d39c1c6a-0a70-4cf7-abaf-7b8d23c80747")
+const Banner = (props: any) => {
+  const [name, setName] = useState("")
+  const [picProfile] = useState("https://bit.ly/3oQz4EI")
+  const [picBackGround] = useState("https://bit.ly/3vBB5si")
 
-	return (
-		<Container style={{backgroundImage: `url(${picBackGround})`}}>
-            <LeftBar>
-                <Picture style={{backgroundImage: `url(${picProfile})`}} />
-                <Name>{name}</Name>
-            </LeftBar>
-			<RightBar>
-				<SocialMedia />
-			</RightBar>
-		</Container>
-	)
+  useEffect(() => {
+    props.state.data.length !== 0 && props.state.data[1] !== null
+      ?
+      setName(
+        `${props.state.data[1].firstName} ${props.state.data[1].lastName}`
+      )
+      : setName("Usuário")
+  }, [props.state.data])
+
+  return (
+    <Container style={{ backgroundImage: `url(${picBackGround})` }}>
+      <LeftBar>
+        <Picture style={{ backgroundImage: `url(${picProfile})` }} />
+        <Name>{name}</Name>
+      </LeftBar>
+      <RightBar>
+        <SocialMedia />
+      </RightBar>
+    </Container>
+  )
 }
 
 const Container = styled.div`
@@ -90,4 +99,4 @@ const RightBar = styled.div`
     }
 `
 
-export default ProfileBanner
+export default Banner

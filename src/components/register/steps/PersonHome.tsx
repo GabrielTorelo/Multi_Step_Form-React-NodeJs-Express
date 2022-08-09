@@ -91,7 +91,7 @@ const PersonHome = (props: any) => {
 					type="number"
 					placeholder="Digite o CEP"
 					onChange={props.handleStates("zipCode")}
-					onInput={(e) => handleZipCode(e)}
+					onInput={handleZipCode}
 					value={props.values.zipCode}
 				/>
 				<TextField

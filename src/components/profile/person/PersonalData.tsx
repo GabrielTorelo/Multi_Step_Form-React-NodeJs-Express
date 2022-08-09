@@ -1,76 +1,71 @@
 import styled from "styled-components"
 import CardData from "./CardData"
-import { useEffect, useState } from "react"
-import API from "../../../api/user"
 
-const PersonalData = () => {
-  const [data, setData] = useState([])
-  const [userID] = useState("123")
-
-  useEffect(() => {
-    window.onload = () => {
-      getData()
-    }
-  })
-
-  const getData = () => {
-    API.get(`/${userID}`)
-      .then(resp => {
-        setData(resp.data)
-      })
-      .catch(e => {
-        console.log(e);
-      })
-  }
-
-  const delData = (col: string, userID: string) => {
-    API.delete(`/${col}/${userID}`)
-      .then(() => {
-        getData()
-      })
-      .catch((e) => {
-        console.log(e);
-      })
-  }
-
+const PersonalData = (props: any) => {
   return (
     <Container>
-      {data.length !== 0 && data.every(x => x === null) === true
+      {props.state.data.length !== 0 && props.state.data.every((x: null) => x === null) === true
         ? (
           <CardData
-            address={false}
-            info={false}
+            editAd={props.edit}
+            icoConfirmA={props.icoConfirmA}
+            icoConfirmI={props.icoConfirmI}
+            update={props.update}
+            icoEditA={true}
+            icoEditI={true}
+            textEdit={props.textEdit}
+            editDt={props.editDt}
+            state={props.state}
           />
-        ) : data.length !== 0 && data[0] === null
+        ) : props.state.data.length !== 0 && props.state.data[0] === null
           ? (
             <CardData
-              address={false}
               info={true}
-              trashI={true}
-              userID={userID}
-              delData={delData}
-              data={data}
+              icoTrashI={true}
+              editAd={props.edit}
+              icoConfirmA={props.icoConfirmA}
+              icoConfirmI={props.icoConfirmI}
+              update={props.update}
+              icoEditA={true}
+              icoEditI={true}
+              delData={props.delData}
+              textEdit={props.textEdit}
+              editDt={props.editDt}
+              state={props.state}
             />
-          ) : data.length !== 0 && data[1] === null
+          ) : props.state.data.length !== 0 && props.state.data[1] === null
             ? (
               <CardData
                 address={true}
-                info={false}
-                trashA={true}
-                userID={userID}
-                delData={delData}
-                data={data}
+                icoTrashA={true}
+                editAd={props.edit}
+                icoConfirmA={props.icoConfirmA}
+                icoConfirmI={props.icoConfirmI}
+                update={props.update}
+                icoEditA={true}
+                icoEditI={true}
+                delData={props.delData}
+                textEdit={props.textEdit}
+                editDt={props.editDt}
+                state={props.state}
               />
-            ) : data.length !== 0
+            ) : props.state.data.length !== 0
               ? (
                 <CardData
                   address={true}
                   info={true}
-                  trashA={true}
-                  trashI={true}
-                  userID={userID}
-                  delData={delData}
-                  data={data}
+                  icoTrashA={true}
+                  icoTrashI={true}
+                  editAd={props.edit}
+                  icoConfirmI={props.icoConfirmI}
+                  icoConfirmA={props.icoConfirmA}
+                  update={props.update}
+                  icoEditA={true}
+                  icoEditI={true}
+                  delData={props.delData}
+                  textEdit={props.textEdit}
+                  editDt={props.editDt}
+                  state={props.state}
                 />
               ) : <></>
       }

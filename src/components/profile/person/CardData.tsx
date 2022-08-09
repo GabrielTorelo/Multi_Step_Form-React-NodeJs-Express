@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import ShowAddressData from "./ShowAddressData"
-import ShowInfoData from "./ShowInfoData"
+import AddressData from "./AddressData"
+import InfoData from "./InfoData"
 import AboveTheData from "./AboveTheData"
 
 const CardData = (props: any) => {
@@ -9,16 +9,23 @@ const CardData = (props: any) => {
       <Show>
         <AboveTheData
           title={"Endereço"}
-          edit={true}
-          trash={props.trashA}
-          func={props.delData}
           col={"Address"}
-          userID={props.userID}
+          edit={props.icoEditA}
+          confirm={props.icoConfirmA}
+          trash={props.icoTrashA}
+          state={props.state}
+          funcDel={props.delData}
+          funcEditIco={props.textEdit}
+          funcEdit={props.editDt}
+          update={props.update}
         />
         {
-          props.address
+          props.address || props.icoConfirmA
             ?
-            <ShowAddressData values={props.data} />
+            <AddressData
+              editable={props.icoConfirmA}
+              funcUP={props.textEdit}
+              values={props.state} />
             :
             <></>
         }
@@ -26,16 +33,23 @@ const CardData = (props: any) => {
       <Show>
         <AboveTheData
           title={"Informações"}
-          edit={true}
-          trash={props.trashI}
-          func={props.delData}
           col={"Info"}
-          userID={props.userID}
+          edit={props.icoEditI}
+          confirm={props.icoConfirmI}
+          trash={props.icoTrashI}
+          state={props.state}
+          funcDel={props.delData}
+          funcEditIco={props.textEdit}
+          funcEdit={props.editDt}
+          update={props.update}
         />
         {
-          props.info
+          props.info || props.icoConfirmI
             ?
-            <ShowInfoData values={props.data} />
+            <InfoData
+              editable={props.icoConfirmI}
+              funcUP={props.textEdit}
+              values={props.state} />
             :
             <></>
         }
