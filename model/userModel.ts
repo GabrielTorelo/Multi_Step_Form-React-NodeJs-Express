@@ -6,6 +6,11 @@ const schemaUser = Joi.object({
   pass: Joi.string().min(6).required(),
 });
 
+const schemaUserLogin = Joi.object({
+  email: Joi.string().email().required(),
+  pass: Joi.string().min(6).required(),
+});
+
 const schemaInfo = Joi.object({
   firstName: Joi.string().required(),
   lastName: Joi.string().required(),
@@ -22,4 +27,4 @@ const schemaAdds = Joi.object({
   complement: Joi.string().empty('').default('')
 });
 
-export default { schemaUser, schemaInfo, schemaAdds }
+export default { schemaUser, schemaUserLogin, schemaInfo, schemaAdds }

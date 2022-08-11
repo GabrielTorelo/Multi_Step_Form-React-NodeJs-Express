@@ -1,8 +1,31 @@
 import { Request, Response } from "express";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import fireAuth from "../config/fireAuth"
 import firebase from "../config/firebase";
 import User from "../model/userModel";
 
 export default class UserController {
+  public static async login(req: Request, res: Response): Promise<void> {
+    const { email, pass } = req.body;
+    try {
+      fireAuth.automaticDataCollectionEnabled
+      User.schemaUserLogin.validateAsync({ email, pass }).then(async val => {
+        const auth = getAuth();
+        await signInWithEmailAndPassword(auth, val.email, val.pass)
+          .then((userCredential) => {
+            res.status(200).send(userCredential.user.uid)
+          })
+          .catch((error) => {
+            res.status(400).send(error.code)
+          });
+      }).catch(e => {
+        res.status(400).send(`Error: ${e.message}`)
+      })
+    } catch (e) {
+      res.status(400).send(`Error: ${e}`)
+    }
+  }
+
   public static async create(req: Request, res: Response): Promise<void> {
     const { email, userName, pass } = req.body;
     try {
@@ -115,7 +138,7 @@ export default class UserController {
     }
   }
 
-  public static update(req: Request, res: Response): void {
+  public static async update(req: Request, res: Response): Promise<void> {
     let safe = true
     let schema: any = undefined
     let objValid = {}
